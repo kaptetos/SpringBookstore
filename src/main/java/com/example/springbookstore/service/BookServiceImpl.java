@@ -2,10 +2,9 @@ package com.example.springbookstore.service;
 
 import com.example.springbookstore.entity.Book;
 import com.example.springbookstore.repository.BookRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -13,7 +12,7 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository= bookRepository;
+        this.bookRepository = bookRepository;
     }
 
     @Override
