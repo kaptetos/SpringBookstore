@@ -6,8 +6,8 @@ import com.example.springbookstore.entity.Book;
 import com.example.springbookstore.service.BookService;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,7 +51,8 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public BookDto updateBook(@PathVariable Long id, @RequestBody CreateBookRequestDto updateBookRequestDto) {
+    public BookDto updateBook(@PathVariable Long id,
+                              @RequestBody CreateBookRequestDto updateBookRequestDto) {
         Book updatedBook = bookService.updateBook(id, updateBookRequestDto);
         return bookMapper.bookToBookDto(updatedBook);
     }
