@@ -1,13 +1,27 @@
 package com.example.springbookstore.dto;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class CreateBookRequestDto {
+    @NotBlank(message = "Title is mandatory")
     private String title;
+
+    @NotBlank(message = "Author is mandatory")
     private String author;
+
+    @NotBlank(message = "ISBN is mandatory")
     private String isbn;
+
+    @NotNull(message = "Price is mandatory")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than 0")
     private BigDecimal price;
+
+    @NotBlank(message = "Description is mandatory")
     private String description;
+
     private String coverImage;
 
     public String getTitle() {
