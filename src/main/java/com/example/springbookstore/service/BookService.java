@@ -8,10 +8,6 @@ public interface BookService {
 
     BookDto createBook(CreateBookRequestDto createBookRequestDto);
 
-    List<BookDto> getAllBooks();
-
-    BookDto getBookById(Long id);
-
     List<BookDto> findAll();
 
     BookDto findById(Long id);

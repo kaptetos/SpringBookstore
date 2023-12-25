@@ -11,7 +11,6 @@ public class BookDto {
     private String description;
     private String coverImage;
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }

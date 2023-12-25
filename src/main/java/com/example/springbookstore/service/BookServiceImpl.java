@@ -7,7 +7,6 @@ import com.example.springbookstore.exception.EntityNotFoundException;
 import com.example.springbookstore.mapper.BookMapper;
 import com.example.springbookstore.repository.BookRepository;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,26 +30,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookDto> getAllBooks() {
-        List<Book> books = bookRepository.findAll();
-        return books.stream()
-                .map(bookMapper::entityToDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public BookDto getBookById(Long id) {
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Book", id));
-        return bookMapper.entityToDto(book);
-    }
-
-    @Override
     public List<BookDto> findAll() {
         List<Book> books = bookRepository.findAll();
         return books.stream()
                 .map(bookMapper::entityToDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
