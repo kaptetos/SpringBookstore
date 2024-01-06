@@ -1,33 +1,14 @@
-package com.example.springbookstore.entity;
+package com.example.springbookstore.dto;
 
 import java.math.BigDecimal;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
-public class Book {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class CreateBookRequestDto {
     private String title;
     private String author;
     private String isbn;
     private BigDecimal price;
     private String description;
     private String coverImage;
-
-    // Геттеры и сеттеры
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
