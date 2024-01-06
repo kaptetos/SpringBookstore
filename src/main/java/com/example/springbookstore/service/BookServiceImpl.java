@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookServiceImpl implements BookService {
-
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
 
@@ -39,7 +38,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto findById(Long id) {
-        return null;
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Book", id));
+        return bookMapper.entityToDto(book);
     }
 
     @Override
@@ -47,7 +48,6 @@ public class BookServiceImpl implements BookService {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Book", id));
 
-        // Update fields
         book.setTitle(updateBookRequestDto.getTitle());
         book.setAuthor(updateBookRequestDto.getAuthor());
 
