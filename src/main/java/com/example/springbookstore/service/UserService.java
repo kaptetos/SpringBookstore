@@ -7,6 +7,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-
     User registerUser(UserRegistrationRequestDto request) throws RegistrationException;
 }

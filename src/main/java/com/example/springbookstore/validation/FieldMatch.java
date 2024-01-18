@@ -13,7 +13,6 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = FieldMatchValidator.class)
 @Documented
 public @interface FieldMatch {
-
     String message() default "Fields don't match";
 
     Class<?>[] groups() default {};

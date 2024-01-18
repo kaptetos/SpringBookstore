@@ -7,7 +7,6 @@ import java.lang.reflect.Field;
 
 @Slf4j
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
-
     private String firstFieldName;
     private String secondFieldName;
 
