@@ -9,7 +9,6 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface BookMapper {
-
     @Mappings({
             @Mapping(target = "id", ignore = true),
             @Mapping(target = "deleted", ignore = true),

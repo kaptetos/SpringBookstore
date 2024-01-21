@@ -8,6 +8,8 @@ import com.example.springbookstore.mapper.BookMapper;
 import com.example.springbookstore.repository.BookRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -61,8 +63,13 @@ public class BookServiceImpl implements BookService {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Book", id));
 
-        book.setDeleted(true);
+        bookRepository.deleteById(id);
+    }
 
-        bookRepository.save(book);
+    @Override
+    public Page<BookDto> searchBooksByTitle(String title, Pageable pageable) {
+        Page<Book> booksPage = bookRepository.findByTitleContainingIgnoreCase(title, pageable);
+
+        return booksPage.map(bookMapper::entityToDto);
     }
 }
